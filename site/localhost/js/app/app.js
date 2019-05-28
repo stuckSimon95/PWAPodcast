@@ -1,5 +1,6 @@
 (function () {
 
+    var pathPreScript = "http://localhost:5500/PWAPodcast/site/localhost/";
     //push key
     var applicationServerPublicKey = 'BH2mv3NZwRaO4-fnNAXe212SW8gep402wV4dStk2vewdGtUOrVMrGY0zh-2WNT4_aEVLc12r0bfuABanQRy8bDM';
 
@@ -49,12 +50,12 @@
 
             getSubscription: function () {
 
-                return navigator.serviceWorker.getRegistration()
+                /* return navigator.serviceWorker.getRegistration()
                     .then(function (registration) {
 
                         return registration.pushManager.getSubscription();
 
-                    });
+                    }); */
 
             },
 
@@ -83,14 +84,14 @@
 
                 if (self.swRegistration) {
 
-                    self.getSubscription()
+                    /* self.getSubscription()
                         .then(function (subscription) {
 
                             if (!subscription) {
                                 self.subscribeUser();
                             }
 
-                        });
+                        }); */
 
                 }
 
@@ -174,9 +175,9 @@
 
     }
 
-    if ('serviceWorker' in navigator) {
-
-        navigator.serviceWorker.register('/sw.js').then(reg => {
+    if ('serviceWorker' in navigator) 
+    {
+        navigator.serviceWorker.register(pathPreScript + 'sw.js').then(reg => {
 
             // reg.installing; // the installing worker, or undefined
             // reg.waiting; // the waiting worker, or undefined
@@ -215,8 +216,8 @@
 
 
             if ("sync" in reg) {
-
-                reg.sync.register('get-episode');
+               // debugger;
+                /* reg.sync.register('get-episode'); */
 
             }
 

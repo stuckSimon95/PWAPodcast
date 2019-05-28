@@ -1,5 +1,6 @@
 (function () {
 
+    var pathPreScript = "http://localhost:5500/PWAPodcast/site/localhost/";
     function renderResults(results) {
 
         var template = document.getElementById("search-results-template"),
@@ -15,7 +16,7 @@
 
     function fetchSearch(term) {
 
-        fetch("api/search.json?term=" + term)
+        fetch(pathPreScript + "api/search.json?term=" + term)
             .then(function (response) {
 
                 if (response.status !== 200) {     

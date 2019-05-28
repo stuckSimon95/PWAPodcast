@@ -9,13 +9,13 @@ try {
 
     if (typeof fetch === "undefined" || fetch.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift("js/polyfil/fetch.js");
+        scripts.unshift("/js/polyfil/fetch.js");
 
     }
 
     if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift("js/polyfil/es6-promise.min.js");
+        scripts.unshift("/js/polyfil/es6-promise.min.js");
 
     }
 
@@ -37,15 +37,16 @@ try {
 
     // loop through our script urls
     while (src = scripts.shift()) {
-
+        
         if ('async' in firstScript) { // modern browsers
-
+            //console.log(firstScript);
             script = document.createElement('script');
             script.async = false;
             script.src = src;
-            document.body.appendChild(script);
+            //document.body.appendChild(script);
 
         } else if (firstScript.readyState) { // IE<10
+            
             // create a script and add it to our todo pile
             script = document.createElement('script');
             pendingScripts.push(script);
@@ -55,6 +56,7 @@ try {
             // else we’ll miss the loaded event for cached scripts
             script.src = src;
         } else { // fall back to defer
+            
             document.write('<script src="' + src + '" defer></' + 'script>');
         }
     }

@@ -13,7 +13,7 @@ var EpisodesModule = require("./make.episodes"),
     https = require('https'),
     environment = {
         "production": "https://podstr.love2dev.com",
-        "localhost": "http://localhost:57662/"
+        "localhost": "http://http://localhost:5500/"
     },
     utf8 = 'utf-8';
 
