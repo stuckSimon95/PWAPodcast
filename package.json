@@ -1,0 +1,25 @@
+{
+  "name": "pwapodcast",
+  "version": "0.0.3",
+  "description": "PWA Podcast Demonstration Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server site/localhost/ -p 57662 -c-1 -i -s"
+  },
+  "author": "Chris Love",
+  "license": "restricted",
+  "private": true,
+  "devDependencies": {
+    "feedparser": "*",
+    "glob": "*",
+    "graceful-fs": "*",
+    "http-server": "*",
+    "image-size": "*",
+    "lodash": "^4.17.11",
+    "mustache": "*",
+    "ncp": "*",
+    "request": "^2.88.0",
+    "strip-bom": "*"
+  }
+}
