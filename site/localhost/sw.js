@@ -4,7 +4,7 @@
 Constants used in the functions to ensure consistency
 Adjust values to fit your desired naming and time frame conventions.
 */
-var pathPreScript = "./PWAPodcast/site/localhost/";
+var pathPreScript = "/PWAPodcast/site/localhost/";
 const VERSION = "v1",
     PRECACHE_NAME = "pre-cache",
     // CACHE_MANIFEST = "cache-manifest.json",
@@ -13,28 +13,32 @@ const VERSION = "v1",
     DYNAMIC_CACHE_NAME = "dynamic-cache",
     MP3_CACHE_NAME = "episode-mp3-cache",
     DYNAMIC_CACHE_MAX = 20,
+    TRYING_URLS = [
+        "js/app/app.bootstrap.js",
+        "js/libs/jquery.small.js",
+        "https://fonts.googleapis.com/css?family=Oswald:300,400"
+    ],
     PRECACHE_URLS = [
-        pathPreScript + "css/libs/bootstrap.min.css",
+        "css/libs/bootstrap.min.css",
         "https://fonts.googleapis.com/css?family=Oswald:300,400",
-        "http://localhost:57662/css/libs/font-awesome.min.css",
-        "http://localhost:57662/css/libs/font-awesome.min.css",
+        "css/libs/font-awesome.min.css",
         "https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600,700,800",
         "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700",
-        "http://localhost:57662/css/app/site.css",
-        pathPreScript + "img/pwa-podstr-logo-144x70.png",
-        pathPreScript + "js/app/app.bootstrap.js",
-        pathPreScript + "js/libs/jquery.small.js",
-        pathPreScript + "js/libs/index.js",
-        pathPreScript + "js/libs/collapse.js",
-        pathPreScript + "js/libs/util.js",
-        pathPreScript + "js/app/app.js",
-        pathPreScript + "js/app/podcast.js",
-        pathPreScript + "js/app/podcasts.js",
-        pathPreScript + "js/app/config.js",
-        pathPreScript + "js/app/contact.js",
-        pathPreScript + "js/app/home.js",
-        pathPreScript + "js/libs/mustache.min.js",
-        pathPreScript + "js/app/search.js"
+        "css/app/site.css",
+        "img/pwa-podstr-logo-144x70.png",
+        "js/app/app.bootstrap.js",
+        "js/libs/jquery.small.js",
+        "js/libs/index.js",
+        "js/libs/collapse.js",
+        "js/libs/util.js",
+        "js/app/app.js",
+        "js/app/podcast.js",
+        "js/app/podcasts.js",
+        "js/app/config.js",
+        "js/app/contact.js",
+        "js/app/home.js",
+        "js/libs/mustache.min.js",
+        "js/app/search.js"
     ];
 //    IDB_NAME = "sw_cache",
 //    URL_CACHE_DB = "url-meta-cache",
@@ -48,7 +52,7 @@ function cacheName(key) {
 }
 
 self.addEventListener("install", event => {
-
+    
     self.skipWaiting();
 
     event.waitUntil(
@@ -85,7 +89,7 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
 
-    console.log("fetch url: ", event.request.url);
+    //console.log("fetch url: ", event.request.url);
 
     let request = event.request;
 
@@ -100,7 +104,7 @@ self.addEventListener("fetch", event => {
                         let cacheResp = response.clone();
 
                         for (var pair of response.headers.entries()) {
-                            console.log("header - " + pair[0] + ': ' + pair[1]);
+                            //console.log("header - " + pair[0] + ': ' + pair[1]);
                         }
 
                         //only cache is the status is OK & not a chrome-extension URL
@@ -140,8 +144,8 @@ self.addEventListener("push", event => {
         const title = "1. Start Here to Build a Career in Web Development";
         const options = {
             body: 'Yay it works.',
-            icon: pathPreScript + 'img/pwa-podstr-logo-70x70.png',
-            badge: pathPreScript + 'img/pwa-podstr-logo-70x70.png',
+            icon: 'img/pwa-podstr-logo-70x70.png',
+            badge: 'img/pwa-podstr-logo-70x70.png',
             image: '"http://i1.sndcdn.com/avatars-000227802710-27eerh-original.jpg"',
             vibrate: [200, 100, 200, 100, 200, 100, 200],
             actions: [{
@@ -156,7 +160,7 @@ self.addEventListener("push", event => {
                 }
             ]
         };
-
+        
         event.waitUntil(self.registration.showNotification(title, options));
 
     } catch (e) {

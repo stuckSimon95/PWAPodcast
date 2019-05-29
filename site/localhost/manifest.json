@@ -3,7 +3,7 @@
 "lang": "en",
 "name": "PWA Podstr",
 "display": "fullscreen",
-"start_url": ".",
+"start_url": "/PWAPodcast/site/localhost/",
 "short_name": "Podstr",
 "theme_color": "transparent",
 "description": "A PWA Podcast Example App",

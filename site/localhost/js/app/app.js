@@ -1,6 +1,6 @@
 (function () {
 
-    var pathPreScript = "http://localhost:5500/PWAPodcast/site/localhost/";
+    var pathPreScript = "/PWAPodcast/site/localhost/";
     //push key
     var applicationServerPublicKey = 'BH2mv3NZwRaO4-fnNAXe212SW8gep402wV4dStk2vewdGtUOrVMrGY0zh-2WNT4_aEVLc12r0bfuABanQRy8bDM';
 
@@ -50,12 +50,12 @@
 
             getSubscription: function () {
 
-                /* return navigator.serviceWorker.getRegistration()
+                return navigator.serviceWorker.getRegistration()
                     .then(function (registration) {
 
                         return registration.pushManager.getSubscription();
 
-                    }); */
+                    });
 
             },
 
@@ -177,7 +177,8 @@
 
     if ('serviceWorker' in navigator) 
     {
-        navigator.serviceWorker.register(pathPreScript + 'sw.js').then(reg => {
+        
+        navigator.serviceWorker.register('sw.js').then(reg => {
 
             // reg.installing; // the installing worker, or undefined
             // reg.waiting; // the waiting worker, or undefined
@@ -207,7 +208,7 @@
 
             //push notification feature detection
             if ("PushManager" in window) {
-
+                //debugger;
                 pushMgr.swRegistration = reg;
 
                 pushMgr.initialisePush();
@@ -216,8 +217,7 @@
 
 
             if ("sync" in reg) {
-               // debugger;
-                /* reg.sync.register('get-episode'); */
+                reg.sync.register('get-episode');
 
             }
 

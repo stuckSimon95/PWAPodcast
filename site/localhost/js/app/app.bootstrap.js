@@ -1,7 +1,7 @@
 try {
 
     // borrowed from https://www.html5rocks.com/en/tutorials/speed/script-loading/#toc-aggressive-optimisation
-
+    var pathPreScript = "/PWAPodcast/site/localhost/";
     var src,
         script,
         pendingScripts = [],
@@ -9,16 +9,17 @@ try {
 
     if (typeof fetch === "undefined" || fetch.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift("/js/polyfil/fetch.js");
+        scripts.unshift(pathPreScript + "js/polyfil/fetch.js");
 
     }
 
     if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift("/js/polyfil/es6-promise.min.js");
+        scripts.unshift(pathPreScript + "js/polyfil/es6-promise.min.js");
 
     }
 
+    console.log(scripts);
     // Watch scripts load in IE
     function stateChange() {
         // Execute as many scripts in order as we can
@@ -39,11 +40,11 @@ try {
     while (src = scripts.shift()) {
         
         if ('async' in firstScript) { // modern browsers
-            //console.log(firstScript);
+            
             script = document.createElement('script');
             script.async = false;
             script.src = src;
-            //document.body.appendChild(script);
+            document.body.appendChild(script);
 
         } else if (firstScript.readyState) { // IE<10
             
