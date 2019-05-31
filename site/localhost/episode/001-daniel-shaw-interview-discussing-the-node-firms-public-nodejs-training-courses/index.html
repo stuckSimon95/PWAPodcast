@@ -39,34 +39,7 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a href="/" class="navbar-brand">
-            <img src="img/pwa-podstr-logo-144x70.png" alt="PWA Pdstr" class="img-responsive">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="podcasts/">Podcasts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="listenlater/">Listen Later</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="config/">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0 flex-nowrap">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    <div id="_header"></div>
 
     <main class="main-content container-fluid" role="main">
         <div class="container">
@@ -200,6 +173,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         var scripts = ["js/libs/jquery.small.js",
             "js/libs/index.js",
@@ -208,6 +182,9 @@
             "js/app/app.js",
             "js/app/episode.js"
         ];
+
+        // CARICAMENTO HEADER
+        $('#_header').load('_header.html');
     </script>
 
     <script src="js/app/app.bootstrap.js"></script>

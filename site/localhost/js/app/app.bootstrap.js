@@ -9,17 +9,16 @@ try {
 
     if (typeof fetch === "undefined" || fetch.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift(pathPreScript + "js/polyfil/fetch.js");
+        scripts.unshift("js/polyfil/fetch.js");
 
     }
 
     if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
 
-        scripts.unshift(pathPreScript + "js/polyfil/es6-promise.min.js");
+        scripts.unshift("js/polyfil/es6-promise.min.js");
 
     }
-
-    console.log(scripts);
+    
     // Watch scripts load in IE
     function stateChange() {
         // Execute as many scripts in order as we can
@@ -40,7 +39,6 @@ try {
     while (src = scripts.shift()) {
         
         if ('async' in firstScript) { // modern browsers
-            
             script = document.createElement('script');
             script.async = false;
             script.src = src;

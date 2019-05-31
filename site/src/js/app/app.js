@@ -94,7 +94,7 @@ function urlB64ToUint8Array(base64String) {
   
 
 function subscribeUser() {
-
+    console.log('subscribeUser..');
     const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
 
     swRegistration.pushManager.subscribe({
@@ -111,6 +111,7 @@ function subscribeUser() {
         updateBtn();
 
     }) .catch(function (err) {
+        
         console.log('Failed to subscribe the user: ', err);
         updateBtn();
     });

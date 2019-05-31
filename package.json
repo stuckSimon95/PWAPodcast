@@ -7,11 +7,12 @@
   "license": "restricted",
   "private": true,
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-connect": "*",
     "feedparser": "*",
     "glob": "*",
     "graceful-fs": "*",
+    "grunt": "*",
+    "grunt-contrib-connect": "*",
+    "html-loader": "^0.5.5",
     "http-server": "*",
     "image-size": "*",
     "lodash": "^4.17.11",
@@ -19,5 +20,8 @@
     "ncp": "*",
     "request": "^2.88.0",
     "strip-bom": "*"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }

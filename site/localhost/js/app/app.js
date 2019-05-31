@@ -49,7 +49,7 @@
             },
 
             getSubscription: function () {
-
+                
                 return navigator.serviceWorker.getRegistration()
                     .then(function (registration) {
 
@@ -84,14 +84,14 @@
 
                 if (self.swRegistration) {
 
-                    /* self.getSubscription()
+                    self.getSubscription()
                         .then(function (subscription) {
 
                             if (!subscription) {
                                 self.subscribeUser();
                             }
 
-                        }); */
+                        });
 
                 }
 
@@ -160,6 +160,7 @@
                                         self._isSubscribed = true;
 
                                     }) .catch(function (err) {
+                                        
                                         console.log('Failed to subscribe the user: ', err);
                                     });
 
@@ -216,10 +217,10 @@
             }
 
 
-            if ("sync" in reg) {
+            /* if ("sync" in reg) {
                 reg.sync.register('get-episode');
 
-            }
+            } */
 
         });
 
@@ -244,10 +245,10 @@
 
         }
 
-        window.addEventListener('beforeinstallprompt', function(e) {
-            console.log('beforeinstallprompt Event fired');
-            // e.preventDefault();
-            // return false;
+        window.addEventListener('beforeinstallprompt', function(e) 
+        {
+            e.preventDefault();
+            return false;
           });
 
     }

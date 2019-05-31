@@ -26,7 +26,7 @@ class EpisodeModule extends SiteModule {
     }
 
     render() {
-
+        
         let episodeObj = _.assignIn(this.getDefaultEpisode(), this.getEpisode());
 
         episodeObj.link = "https://api.spreaker.com/download/episode/8734727/ep105_mixdown.mp3";

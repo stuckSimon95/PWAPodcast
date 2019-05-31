@@ -94,46 +94,34 @@ self.addEventListener("fetch", event => {
     let request = event.request;
 
     event.respondWith(
-
         caches.match(event.request).then(
             response => {
-
                 return response || fetch(event.request).then(
                     response => {
-
                         let cacheResp = response.clone();
-
                         for (var pair of response.headers.entries()) {
                             //console.log("header - " + pair[0] + ': ' + pair[1]);
                         }
-
                         //only cache is the status is OK & not a chrome-extension URL
                         if ([0, 200].includes(response.status) &&
                             request.url.indexOf("chrome-extension")) {
-
                             caches.open(cacheName(DYNAMIC_CACHE_NAME)).then(
                                 cache => {
-
                                     cache.put(event.request, cacheResp);
-
                                 });
-
                         }
-
                         return response;
                     }
                 )
-
             })
-
         /* end responseWith */
-
     );
 
 });
 
 
-self.addEventListener("push", event => {
+self.addEventListener("push", event => 
+{
 
     console.log('[Service Worker] Push Received.');
     console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
@@ -160,7 +148,7 @@ self.addEventListener("push", event => {
                 }
             ]
         };
-        
+
         event.waitUntil(self.registration.showNotification(title, options));
 
     } catch (e) {
@@ -196,7 +184,7 @@ function listenToEpisode(notification) {
 
     console.log("listen to episode: ", notification.title);
 
-    clients.openWindow('/episode/' + makeSlug(notification.title));
+    clients.openWindow('episode/' + makeSlug(notification.title));
 
 }
 
